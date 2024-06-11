@@ -2,6 +2,7 @@ NODES- python code
 -----------------------------------------------
 import pandas as pd
 import xml.etree.cElementTree as ET
+import os
 
 def generate_nodes_xml(nodes_data, output_file):
     root = ET.Element("nodes")
@@ -14,13 +15,33 @@ def generate_nodes_xml(nodes_data, output_file):
             node.set("z", str(row["z"]))
         if not pd.isna(row["node_type"]):
             node.set("type", row["node_type"])
-
+    
     tree = ET.ElementTree(root)
     tree.write(output_file, xml_declaration=True, encoding="utf-8")
 
 if __name__ == "__main__":
-    # Read data from Excel file
-    nodes_data = pd.read_excel("data.xlsx", sheet_name="Nodes")
-
-    # Generate XML file
-    generate_nodes_xml(nodes_data, "nodes.xml")
+    try:
+        # Print the current working directory
+        print("Current working directory:", os.getcwd())
+        
+        # Full path to the Excel file
+        file_path = r"C:\Users\nitesh mandal\Desktop\SUMO KA PY\data.xlsx"
+        
+        # Print available sheet names to debug
+        with pd.ExcelFile(file_path, engine='openpyxl') as xls:
+            print("Available sheets:", xls.sheet_names)
+        
+        # Read data from Excel file using openpyxl engine
+        nodes_data = pd.read_excel(file_path, sheet_name="Nodes", engine='openpyxl')
+        print("Data read successfully.")
+        
+        # Generate XML file
+        generate_nodes_xml(nodes_data, "nodes.xml")
+        print("XML file generated successfully.")
+    
+    except FileNotFoundError as e:
+        print(f"File not found: {e}")
+    except ValueError as e:
+        print(f"Value error: {e}")
+    except Exception as e:
+        print(f"An error occurred: {e}")
