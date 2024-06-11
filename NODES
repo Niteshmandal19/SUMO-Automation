@@ -1,1 +1,26 @@
-NODES
+NODES- python code
+-----------------------------------------------
+import pandas as pd
+import xml.etree.cElementTree as ET
+
+def generate_nodes_xml(nodes_data, output_file):
+    root = ET.Element("nodes")
+    for _, row in nodes_data.iterrows():
+        node = ET.SubElement(root, "node")
+        node.set("id", str(row["node_id"]))
+        node.set("x", str(row["x"]))
+        node.set("y", str(row["y"]))
+        if pd.notnull(row["z"]):
+            node.set("z", str(row["z"]))
+        if not pd.isna(row["node_type"]):
+            node.set("type", row["node_type"])
+
+    tree = ET.ElementTree(root)
+    tree.write(output_file, xml_declaration=True, encoding="utf-8")
+
+if __name__ == "__main__":
+    # Read data from Excel file
+    nodes_data = pd.read_excel("data.xlsx", sheet_name="Nodes")
+
+    # Generate XML file
+    generate_nodes_xml(nodes_data, "nodes.xml")
