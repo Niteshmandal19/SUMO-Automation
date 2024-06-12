@@ -146,7 +146,7 @@ create routes file
 (duarouter -n sumotest.net.xml --route-files sumotest.trips.xml -o sumotest.rout.xml --ignore-errors)
 
 Step 6:
-create sumotest.sumo.cfg
+create sumotest.sumo.cfg by adding the below code in txt file and renaming it as (sumotest.sumo.cfg)
 (<?xml version="1.0" encoding="UTF-8"?>
 
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
