@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2024-06-12 08:23:41 by Eclipse SUMO netconvert Version 1.20.0
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netconvertConfiguration.xsd">
+
+    <input>
+        <node-files value="nodes.nod.xml"/>
+        <edge-files value="edges.edg.xml"/>
+    </input>
+
+    <output>
+        <output-file value="sumotest.net.xml"/>
+    </output>
+
+</configuration>
+-->
+
+<net version="1.20" junctionCornerDetail="5" limitTurnSpeed="5.50" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/net_file.xsd">
+
+    <location netOffset="-280273.30,-2116873.36" convBoundary="0.00,0.00,322.39,64.76" origBoundary="280273.30,2116854.61,280686.24,2116938.12" projParameter="!"/>
+
+    <edge id=":5_0" function="internal">
+        <lane id=":5_0_0" index="0" speed="8.33" length="0.30" shape="234.92,19.54,36.58 234.62,19.60,36.58"/>
+    </edge>
+    <edge id=":7_0" function="internal">
+        <lane id=":7_0_0" index="0" speed="8.33" length="0.30" shape="146.79,36.93,36.48 146.50,36.99,36.48"/>
+    </edge>
+
+    <edge id="a1" from="1" to="5" priority="2">
+        <lane id="a1_0" index="0" speed="8.33" length="89.61" shape="322.71,1.57,36.57 234.92,19.54,36.58"/>
+    </edge>
+    <edge id="a2" from="5" to="7" priority="2">
+        <lane id="a2_0" index="0" speed="8.33" length="89.53" shape="234.62,19.60,36.58 146.79,36.93,36.48"/>
+    </edge>
+    <edge id="a3" from="7" to="11" priority="2">
+        <lane id="a3_0" index="0" speed="8.33" length="149.14" shape="146.50,36.99,36.48 0.31,66.33,39.95"/>
+    </edge>
+
+    <junction id="1" type="dead_end" x="322.39" y="0.00" z="36.57" incLanes="" intLanes="" shape="322.39,0.00,36.57 323.03,3.13,36.57"/>
+    <junction id="11" type="dead_end" x="0.00" y="64.76" z="39.95" incLanes="a3_0" intLanes="" shape="0.63,67.90,39.95 0.00,64.76,39.95"/>
+    <junction id="5" type="priority" x="234.45" y="18.00" z="36.58" incLanes="a1_0" intLanes=":5_0_0" shape="235.24,21.11,36.58 234.59,17.97,36.58 234.31,18.03,36.58 234.93,21.17,36.58">
+        <request index="0" response="0" foes="0" cont="0"/>
+    </junction>
+    <junction id="7" type="priority" x="146.33" y="35.39" z="36.48" incLanes="a2_0" intLanes=":7_0_0" shape="147.10,38.50,36.48 146.48,35.36,36.48 146.18,35.42,36.48 146.81,38.56,36.48">
+        <request index="0" response="0" foes="0" cont="0"/>
+    </junction>
+
+    <connection from="a1" to="a2" fromLane="0" toLane="0" via=":5_0_0" dir="s" state="M"/>
+    <connection from="a2" to="a3" fromLane="0" toLane="0" via=":7_0_0" dir="s" state="M"/>
+
+    <connection from=":5_0" to="a2" fromLane="0" toLane="0" dir="s" state="M"/>
+    <connection from=":7_0" to="a3" fromLane="0" toLane="0" dir="s" state="M"/>
+
+</net>

@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<edges>
+  <edge id="a1" from="1" to="5" speed="8.33" priority="2"/>
+  <edge id="a2" from="5" to="7" speed="8.33" priority="2"/>
+  <edge id="a3" from="7" to="11" speed="8.33" priority="2"/>
+</edges>
